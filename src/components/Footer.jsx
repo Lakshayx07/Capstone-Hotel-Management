@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">🏨 LuxeStay</h3>
+            <h3 className="text-2xl font-bold mb-4">🏨 Hospitium</h3>
             <p className="text-gray-300 mb-4">
               Experience luxury and comfort in our premium accommodations. 
               Your perfect getaway awaits.
@@ -47,7 +47,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-2 text-gray-300">
-              <p>📧 info@luxestay.com</p>
+              <p>📧 info@hospitium.com</p>
               <p>📞 +1 (555) 123-4567</p>
               <p>📍 123 Luxury Ave, Paradise City</p>
               <p>🕒 24/7 Customer Support</p>

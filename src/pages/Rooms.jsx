@@ -20,12 +20,17 @@ const Rooms = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {rooms.map((room, index) => (
-            <motion.div
+            <Link
               key={room.id}
+              to={`/room/${room.id}`}
+              className="block"
+            >
+              <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               className="card overflow-hidden group"
             >
               <div className="relative overflow-hidden">
@@ -70,23 +75,14 @@ const Rooms = () => {
                   )}
                 </div>
                 
-                <div className="flex space-x-3">
-                  <Link
-                    to={`/room/${room.id}`}
-                    className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 text-center"
-                  >
-                    View Details
-                  </Link>
-                  <Link
-                    to="/booking"
-                    state={{ room }}
-                    className="flex-1 bg-accent-500 hover:bg-accent-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 text-center"
-                  >
-                    Book Now
-                  </Link>
+                <div className="text-center">
+                  <div className="bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg group-hover:bg-primary-700 transition duration-300">
+                    Tap to View Details
+                  </div>
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
 

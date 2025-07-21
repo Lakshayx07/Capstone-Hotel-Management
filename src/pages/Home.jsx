@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { testimonials } from '../data/rooms';
-
 const Home = () => {
   return (
     <div className="pt-16">
@@ -11,7 +10,7 @@ const Home = () => {
           <img 
             src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200"
             alt="Luxury Hotel"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-70"
           />
         </div>
         
@@ -28,14 +27,14 @@ const Home = () => {
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
             Welcome to
-            <span className="block text-accent-500">LuxeStay</span>
+            <span className="block text-accent-500">Hospitium</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl md:text-2xl mb-8 text-gray-200"
+            className="text-xl md:text-2xl mb-8 text-gray-100"
           >
             Experience unparalleled luxury and comfort in our premium accommodations
           </motion.p>
@@ -46,10 +45,10 @@ const Home = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="space-x-4"
           >
-            <Link to="/rooms" className="btn-primary">
+            <Link to="/rooms"   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded transition">
               Explore Rooms
             </Link>
-            <Link to="/booking" className="btn-secondary">
+            <Link to="/booking"   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded transition">
               Book Now
             </Link>
           </motion.div>
@@ -82,36 +81,36 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                icon: "🏊‍♂️",
-                title: "Infinity Pool",
-                description: "Relax in our stunning infinity pool with panoramic views"
-              },
-              {
-                icon: "🍽️",
-                title: "Fine Dining",
-                description: "Experience world-class cuisine at our award-winning restaurant"
-              },
-              {
-                icon: "💆‍♀️",
-                title: "Luxury Spa",
-                description: "Rejuvenate your body and mind at our premium spa facility"
-              },
-              {
-                icon: "🏋️‍♂️",
-                title: "Fitness Center",
-                description: "State-of-the-art equipment for your workout needs"
-              },
-              {
-                icon: "🚗",
-                title: "Valet Service",
-                description: "Convenient valet parking and concierge services"
-              },
-              {
-                icon: "📶",
-                title: "High-Speed WiFi",
-                description: "Stay connected with complimentary high-speed internet"
-              }
+            {
+                src: '/assets/infinity-pool.png',
+                title: 'Infinity Pool',
+                description: 'Relax in our stunning infinity pool with panoramic views',
+            },
+            {
+                src: '/assets/fine-dining.png',
+                title: 'Fine Dining',
+                description: 'Experience world-class cuisine at our award-winning restaurant',
+            },
+            {
+                src: '/assets/luxury-spa.png',
+                title: 'Luxury Spa',
+                description: 'Rejuvenate your body and mind at our premium spa facility',
+            },
+            {
+                src: '/assets/fitness-center.png',
+                title: 'Fitness Center',
+                description: 'State-of-the-art equipment for your workout needs',
+            },
+            {
+                src: '/assets/valet-service.png',
+                title: 'Valet Service',
+                description: 'Convenient valet parking and concierge services',
+            },
+            {
+                src: '/assets/highspeed-wifi.png',
+                title: 'High-Speed WiFi',
+                description: 'Stay connected with complimentary high-speed internet',
+            },
             ].map((feature, index) => (
               <motion.div
                 key={index}
