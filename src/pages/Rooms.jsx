@@ -46,6 +46,7 @@ const Rooms = () => {
               
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{room.name}</h3>
+                <p className="text-xl  text-gray-900 mb-2">Location: {room.location}</p>
                 <p className="text-gray-600 mb-4 leading-relaxed">{room.description}</p>
                 
                 <div className="flex items-center justify-between mb-4">

@@ -87,6 +87,7 @@ const RoomDetail = () => {
           >
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-3">{room.name}</h1>
+              <p className="text-xl  text-gray-900 mb-2">Location: {room.location}</p>
               <p className="text-xl text-gray-600 leading-relaxed">{room.description}</p>
             </div>
 
