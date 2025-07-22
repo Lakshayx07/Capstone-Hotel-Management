@@ -131,14 +131,6 @@ const RoomDetail = () => {
                 Book This Room - ${room.price}/night
               </Link>
               
-              <div className="flex space-x-4">
-                <button className="flex-1 border border-primary-600 text-primary-600 hover:bg-primary-50 font-semibold py-3 px-6 rounded-lg transition duration-300">
-                  Add to Favorites
-                </button>
-                <button className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold py-3 px-6 rounded-lg transition duration-300">
-                  Share Room
-                </button>
-              </div>
             </div>
 
             <div className="bg-accent-50 border border-accent-200 rounded-lg p-4 mt-6">
