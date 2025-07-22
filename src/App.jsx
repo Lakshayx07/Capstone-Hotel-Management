@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Rooms from './pages/Rooms';
 import RoomDetail from './pages/RoomDetail';
 import Booking from './pages/Booking';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/room/:id" element={<RoomDetail />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/login" element={<Login/>}/>
           </Routes>
         </motion.main>
-        
         <Footer />
       </div>
     </Router>

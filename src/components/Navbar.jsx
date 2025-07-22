@@ -8,8 +8,15 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Rooms', path: '/rooms' },
+    { name: 'Booking', path: '/booking' },
+    { name: 'Login', path: '/login' },
+  ];
+
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="bg-white shadow-lg fixed w-full top-0 z-50"
@@ -17,7 +24,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold text-primary-800"
             >
@@ -28,11 +35,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {[
-                { name: 'Home', path: '/' },
-                { name: 'Rooms', path: '/rooms' },
-                { name: 'Booking', path: '/booking' }
-              ].map((item) => (
+              {navLinks.slice(0, 4).map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
@@ -48,7 +51,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -67,17 +70,13 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50">
-              {[
-                { name: 'Home', path: '/' },
-                { name: 'Rooms', path: '/rooms' },
-                { name: 'Booking', path: '/booking' }
-              ].map((item) => (
+              {navLinks.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
