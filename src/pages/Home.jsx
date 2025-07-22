@@ -10,7 +10,7 @@ const Home = () => {
           <img 
             src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200"
             alt="Luxury Hotel"
-            className="w-full h-full object-cover opacity-70"
+            className="w-full h-full object-cover opacity-100"
           />
         </div>
         
