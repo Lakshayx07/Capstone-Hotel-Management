@@ -1,10 +1,29 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [username, setUsername] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (isLoggedIn && storedUser?.username) {
+      setUsername(storedUser.username);
+    } else {
+      setUsername(null);
+    }
+  }, [location]); // re-check on route change
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedIn');
+    setUsername(null);
+    navigate('/login');
+  };
 
   const isActive = (path) => location.pathname === path;
 
@@ -12,7 +31,6 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Rooms', path: '/rooms' },
     { name: 'Booking', path: '/booking' },
-    { name: 'Login', path: '/login' },
   ];
 
   return (
@@ -35,7 +53,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navLinks.slice(0, 4).map((item) => (
+              {navLinks.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
@@ -48,6 +66,30 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              {username ? (
+                <>
+                  <span className="px-3 py-2 text-sm font-medium text-primary-700">
+                    Hello, {username}
+                  </span>
+                  <button
+                    onClick={handleLogout}
+                    className="px-3 py-2 text-sm font-medium text-red-600 hover:underline"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-300 ${
+                    isActive('/login')
+                      ? 'text-primary-600 border-b-2 border-primary-600'
+                      : 'text-gray-700 hover:text-primary-600'
+                  }`}
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
 
@@ -90,6 +132,34 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              {username ? (
+                <>
+                  <span className="block px-3 py-2 text-base text-primary-700">
+                    Hello, {username}
+                  </span>
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      handleLogout();
+                    }}
+                    className="block w-full text-left px-3 py-2 text-base font-medium text-red-600 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-300 ${
+                    isActive('/login')
+                      ? 'text-primary-600 bg-primary-50'
+                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-100'
+                  }`}
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

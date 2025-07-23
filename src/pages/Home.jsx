@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { testimonials } from '../data/rooms';
 const Home = () => {
+
   return (
     <div className="pt-16">
       {/* Hero Section */}

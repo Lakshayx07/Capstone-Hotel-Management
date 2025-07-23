@@ -1,14 +1,53 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [error, setError] = useState('');
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Login successful!');
+
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (isLogin) {
+      // Login logic
+      if (
+        storedUser &&
+        storedUser.username === username &&
+        storedUser.password === password
+      ) {
+        localStorage.setItem('loggedIn', 'true');
+        alert('Login successful!');
+        navigate('/')
+        // Redirect or do something after login
+      } else {
+        setError('Invalid username or password');
+      }
+    } else {
+      // Signup logic
+      if (password !== confirmPassword) {
+        setError('Passwords do not match');
+        return;
+      }
+
+      if (storedUser && storedUser.username === username) {
+        setError('Username already exists');
+        return;
+      }
+
+      localStorage.setItem(
+        'user',
+        JSON.stringify({ username, password })
+      );
+      localStorage.setItem('loggedIn', 'true');
+      alert('Account created and logged in!');
+      setIsLogin(true);
+    }
   };
 
   return (
@@ -17,6 +56,10 @@ const LoginPage = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">
           {isLogin ? 'Login' : 'Create a New Account'}
         </h2>
+
+        {error && (
+          <p className="text-red-500 text-center mb-4">{error}</p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
